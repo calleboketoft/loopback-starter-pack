@@ -11,10 +11,10 @@
 
 ```javascript
 let app = require('../../server/server')
-let lbStarterPack = require('@calle/loopback-starter-pack')
+let lbStarterPack = require('loopback-starter-pack')
 
 module.exports = function(Extuser) {
-  lbStarterPack.addMyAuthorizationsEndpoint (app, Extuser)
+  lbStarterPack.myAuthorizationsEndpoint (app, Extuser)
 }
 ```
 
