@@ -2,14 +2,28 @@
 - Create new Loopback application by `slc loopback`
   - api-server
 
+- Add `loopback-starter-pack` to `package.json`:
+  - "loopback-starter-pack": "git+https://github.com/calleboketoft/loopback-starter-pack.git"
+
 - modify the file `server/model-config.json` so that the following models are set as `public`:
   - ACL
   - RoleMapping
   - Role
 
-- add the file `common/models/ext-user.js`:
+- Create the loopback model ExtUser
+- slc loopback:model
+  - Name: ExtUser
+  - db: memory
+  - base class: User
+  - expose via REST: yes
+  - custom plural: no
+  - server only
+
+- modify the file `server/models/ext-user.js`:
 
 ```javascript
+'use strict'
+
 let app = require('../../server/server')
 let lbStarterPack = require('loopback-starter-pack')
 
@@ -18,31 +32,11 @@ module.exports = function(Extuser) {
 }
 ```
 
-- add the file `common/models/ext-user.json`
-
-```json
-{
-  "name": "ExtUser",
-  "base": "User",
-  "idInjection": true,
-  "options": {
-    "validateUpsert": true
-  },
-  "properties": {
-    "firstName": {
-      "type": "string"
-    }
-  },
-  "validations": [],
-  "relations": {},
-  "acls": [],
-  "methods": {}
-}
-```
-
 - Add the boot-script `init-acl-common.js`:
 
 ```javascript
+'use strict'
+
 let lbStarterPack = require('loopback-starter-pack')
 
 module.exports = function (app) {
