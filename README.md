@@ -1,5 +1,5 @@
-- Install Strongloop `npm install -g strongloop`
-- Create new Loopback application by `slc loopback`
+- Install Strongloop `npm install -g loopback-cli`
+- Create new Loopback application by `lb`
   - api-server
 
 - Add `loopback-starter-pack` to `package.json`:
@@ -11,7 +11,7 @@
   - Role
 
 - Create the loopback model ExtUser
-- slc loopback:model
+- lb:model
   - Name: ExtUser
   - db: memory
   - base class: User
